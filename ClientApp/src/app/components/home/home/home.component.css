@@ -1,0 +1,73 @@
+body {
+    
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialised;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.centured {
+    text-align: center;
+}
+
+a:hover, a:focus {
+    color: #7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+
+#headerwrap {
+    background: url(https://img.freepik.com/free-photo/flat-lay-of-workstation-with-copy-space-and-laptop_23-2148430879.jpg?w=1480&t=st=1687645147~exp=1687645747~hmac=47f73bda92f9dac457349adad324c3cd35f3312b2660760bbf18043e5020c532) no-repeat center top;
+    margin-top: -10px;
+    padding-top: 20px;
+    text-align: center;
+    background-position: center center;
+    min-height: 500px;
+    width: 100%;
+
+    background-size: 100;
+    -webkit-background-size: cover;
+    background-size: cover
+}
+
+#headerwrap h1 {
+    margin-top: 100px;
+    color: #7b7b7b;
+    font-size:70px;
+    font-weight: 300;
+    letter-spacing:3px;
+}
+
+#headerwrap h2 {
+    color: #7b7b7b;
+    font-size:40px;
+    letter-spacing:2px;
+    text-transform: uppercase;
+}
+
+.w {
+    padding-top: 35px;
+
+}
+
+.w h4 {
+    font-size: 40px;
+}
+
+.w {
+    padding-top: 35px;
+
+}
+
+.w h4 {
+    font-size: 40px;
+}

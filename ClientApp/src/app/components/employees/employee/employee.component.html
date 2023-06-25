@@ -1,0 +1,150 @@
+><div class="container my-5">
+    <h1 class="mb-3">Сотрудники</h1>
+    <div class="table-responsed" id="table-id">
+    <table class="table" table-border *ngIf="employees && employees.length > 0">
+        <thead>
+            <tr class="active">
+                <th>Отдел</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Дата рождения</th>
+                <th>Дата устройства на работу</th>
+                <th>Заработная плата</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{ employee.departament}}</td>
+                <td>{{ employee.surname}}</td>
+                <td>{{ employee.name}}</td>
+                <td>{{ employee.patronymic}}</td>
+                <td>{{ employee.birthday | date:'dd.MM.yyyy' }}</td>
+                <td>{{ employee.dateOfEmployment | date:'dd.MM.yyyy'}}</td>
+                <td>{{ employee.wages}}</td>
+                <td><button (click)="getEmployee(employee)" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal" style="margin-left: auto;">Редактировать</button></td>
+                <td><button (click)="getEmployee(employee)" type="button" class="btn-danger btn btn-primary" data-bs-toggle="modal" data-bs-target="#deletemodal">Удалить</button></td>            
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddModal" style="margin-left: auto;">Добавление нового сотрудника</button>
+    <p *ngIf="!employees || employees.length <= 0">Пока у нас нет сотрудников</p>
+</div>
+</div>
+
+<div class="modal" tabindex="-1" id="editmodal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Редактирование данных сотрудника</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #form="ngForm" >
+            <div class="mb-3">
+              <label for="Departament">Отдел</label>
+              <input type="text" class="form-control" id="Departament" name="Departament" [(ngModel)] = EmployeeRequest.departament>
+            </div>
+            <div class="mb-3">
+                <label for="Surname">Фамилия</label>
+                <input type="text" class="form-control" id="Surname" name="Surname" [(ngModel)] = EmployeeRequest.surname>
+              </div>
+              <div class="mb-3">
+                <label for="Name">Имя</label>
+                <input type="text" class="form-control" id="Name" name="Name" [(ngModel)] = EmployeeRequest.name>
+              </div>
+              <div class="mb-3">
+                <label for="Patronymic">Отчество</label>
+                <input type="text" class="form-control" id="Patronymic" name="Patronymic" [(ngModel)] = EmployeeRequest.patronymic>
+              </div>
+              <div class="mb-3">
+                <label for="Birthday">День рождения</label>
+                <input type="date" class="form-control" id="Birthday" name="Birthday" [(ngModel)] = EmployeeRequest.birthday>
+              </div>
+              <div class="mb-3">
+                <label for="Date_of_employment">Дата устройства на работу</label>
+                <input type="date" class="form-control" id="DateOfEmployment" name="DateOfEmployment" [(ngModel)] = EmployeeRequest.dateOfEmployment>
+              </div>
+              <div class="mb-3">
+                <label for="Wages">Заработная плата</label>
+                <input type="number" class="form-control" id="Wages" name="Wages" [(ngModel)] = EmployeeRequest.wages>
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Сохранить данные</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" tabindex="-1" id="AddModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Добавление нового сотрудника</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #form="ngForm" (ngSubmit)="addEmployee()">
+            <div class="mb-3">
+              <label for="Departament">Отдел</label>
+              <input type="text" class="form-control" id="Departament" name="Departament" [(ngModel)] = EmployeeRequest.departament>
+            </div>
+            <div class="mb-3">
+                <label for="Surname">Фамилия</label>
+                <input type="text" class="form-control" id="Surname" name="Surname" [(ngModel)] = EmployeeRequest.surname>
+              </div>
+              <div class="mb-3">
+                <label for="Name">Имя</label>
+                <input type="text" class="form-control" id="Name" name="Name" [(ngModel)] = EmployeeRequest.name>
+              </div>
+              <div class="mb-3">
+                <label for="Patronymic">Отчество</label>
+                <input type="text" class="form-control" id="Patronymic" name="Patronymic" [(ngModel)] = EmployeeRequest.patronymic>
+              </div>
+              <div class="mb-3">
+                <label for="Birthday">День рождения</label>
+                <input type="date" class="form-control" id="Birthday" name="Birthday" [(ngModel)] = EmployeeRequest.birthday>
+              </div>
+              <div class="mb-3">
+                <label for="Date_of_employment">Дата устройства на работу</label>
+                <input type="date" class="form-control" id="DateOfEmployment" name="DateOfEmployment" [(ngModel)] = EmployeeRequest.dateOfEmployment>
+              </div>
+              <div class="mb-3">
+                <label for="Wages">Заработная плата</label>
+                <input type="number" class="form-control" id="Wages" name="Wages" [(ngModel)] = EmployeeRequest.wages>
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Сохранить данные</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" tabindex="-1" id="deletemodal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Удаление сотрудника</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #form="ngForm" (ngSubmit)="deleteEmployee(EmployeeRequest)">
+            <div class="mb-3">
+              <label>Вы точно хотите удалить данного сотрудника, вернуть его уже будет не возможно!</label>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="submit" class="btn-danger btn btn-primary" data-bs-dismiss="modal" >Удалить</button>
+                </div>
+            </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
